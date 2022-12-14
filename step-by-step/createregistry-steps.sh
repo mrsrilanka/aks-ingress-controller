@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Variables
-RESOURCE_GROUP=<yourresourcegroup>
-VNET_NAME=<yourvnetname>
-REGISTRY_NAME=<yourregistryname>
-REGISTRY_LOCATION=centralus
-MGMT_SNET=<yourvmsubnetname>
-AKS_SUBNET=<yourakssubnetname>
+RESOURCE_GROUP=MyResourceGroup
+VNET_NAME=fwVNETDevTestu5cb
+REGISTRY_NAME=MyRegistry1
+REGISTRY_LOCATION=westus
+MGMT_SNET=Managment
+AKS_SUBNET=Untrust
 
 az acr create \
 -g $RESOURCE_GROUP \
