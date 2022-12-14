@@ -8,25 +8,14 @@ REGISTRY_LOCATION=westus
 MGMT_SNET=Managment
 AKS_SUBNET=Untrust
 
-az acr create \
--g $RESOURCE_GROUP \
--n $REGISTRY_NAME \
---location $REGISTRY_LOCATION \
---sku Premium \
---public-network-enabled false
+az acr create -g $RESOURCE_GROUP -n $REGISTRY_NAME --location $REGISTRY_LOCATION --sku Premium --public-network-enabled false
 
 # Set up private endpoint for Registry
-az network vnet subnet update \
- --name $MGMT_SNET \
- --vnet-name $VNET_NAME \
- --resource-group $RESOURCE_GROUP \
- --disable-private-endpoint-network-policies
+az network vnet subnet update  --name $MGMT_SNET  --vnet-name $VNET_NAME  --resource-group $RESOURCE_GROUP  --disable-private-endpoint-network-policies
 
  
 # Configure Private DNS Zone
-az network private-dns zone create \
-  --resource-group $RESOURCE_GROUP \
-  --name "privatelink.azurecr.io"
+az network private-dns zone create   --resource-group $RESOURCE_GROUP   --name "privatelink.azurecr.io"
 
 # Create Association link
 az network private-dns link vnet create \
